@@ -15,7 +15,7 @@ void printOddOrEven(int number)
 	}
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	int number = -13;
 
@@ -35,23 +35,42 @@ int main(int argc, char *argv[])
 	{
 		printf("No program arguments found.\n");
 	}
-	
+
 	// TODO(Gusti): i don't know why this doesn't work, but someone please FIX it.
 	// --------------- start
+	else
+	{
+		// Get the first argument
+		std::string argumentAsString = argv[1];
+		const char* argumentAsCharArray = argumentAsString.c_str();
+		bool is_string = false;
 
-	// Get the first argument
-	std::string argumentAsString = argv[1];
-	const char* argumentAsCharArray = argumentAsString.c_str();
+		//number = argv[1]; // No
+		//should use atoi?
+		// or std::stoi?
+		for (int i = 0;i < strlen(argumentAsCharArray); i++)
+		{
+			if (isdigit(argumentAsCharArray[i]) == 0)
+			{
+				is_string = true;
+			}
+		}
+		if (is_string)
+		{
+			printf("NAN");
+		}
+		else
+		{
+			number = atoi(argumentAsCharArray);
+			printOddOrEven(number);
+		}
+		//std::cout << argumentAsString << std::endl; // i think this should be removed
 
-	//number = argv[1]; // No
-	//should use atoi?
-	// or std::stoi?
+		// --------------- stop
 
-	std::cout << argumentAsString << std::endl; // i think this should be removed
+		
 
-	// --------------- stop
-
-	printOddOrEven(number);
-
+	}
+	
 	return 0;
 }
