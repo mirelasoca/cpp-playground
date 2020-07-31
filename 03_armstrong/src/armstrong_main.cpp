@@ -1,10 +1,26 @@
 #include <iostream>
-
+#include <math.h>
 bool isArmstrongNumber(int number)
 {
 	// TODO: implement some functionality to see if this number is an armstrong number
+	int digit,  sum = 0;
+	int original_number = number;
+	while (number != 0)
+	{
+		digit = number % 10;
+		sum += pow(digit, 3);
+		number = number / 10;
+	}
 
-	return false;
+	if (sum == original_number)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
 }
 
 void printIsArmstrong(int number)
@@ -46,13 +62,33 @@ int main(int argc, char *argv[])
 		std::cout << "No program arguments found." << std::endl;
 		return 1;
 	}
+	
 
 	int readNumber = 0;
 	// Get the first argument
 	std::string argumentAsString = argv[1];
 	
 	// TODO: read number / cast to integer
+	const char* argumentAsCharArray = argumentAsString.c_str();
+	bool is_string = false;
 
-	printIsArmstrong(readNumber);
-	return 0;
+	for (int i = 0; i < strlen(argumentAsCharArray); i++)
+	{
+		if (isdigit(argumentAsCharArray[i]) == 0)
+		{
+			is_string = true;
+		}
+	}
+	if (is_string)
+	{
+		std::cout << "Undefined output , do whatever" << std::endl;
+		return 0;
+	}
+	else
+	{
+		readNumber = atoi(argumentAsCharArray);
+		printIsArmstrong(readNumber);
+		return 0;
+	}
+
 }
