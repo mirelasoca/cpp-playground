@@ -67,6 +67,7 @@ void setBookName(Book& book, std::string name)
 	strncpy_s(book.title, MAX_TITLE_LEN, name.c_str(), _TRUNCATE);
 	// overwrite the last character
 	book.title[MAX_TITLE_LEN] = 0;
+
 }
 
 int main()
