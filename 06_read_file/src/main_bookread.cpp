@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <string>
 #include <vector>
-
+#include <fstream>
+#include <sstream>
 /**
 	Define a simple book.
 */
@@ -39,7 +40,23 @@ std::vector<Book> readBooksFromTextFile(const std::string& file_name)
 	// E.g. Book myBook;
 	//		...
 	//		results.emplace_back(myBook);
-
+	Book myBook;
+	int i = 0;
+	std::string line;
+	std::ifstream infile(file_name);
+	while (std::getline(infile, line))
+	{
+		if (i % 2 == 0)
+		{
+			myBook.name = line;
+		}
+		else
+		{
+			myBook.authors = line;
+			results.emplace_back(myBook);
+		}
+		i++;
+	}
 	// TODO: END read file and add to results vector --
 	return results;
 }
