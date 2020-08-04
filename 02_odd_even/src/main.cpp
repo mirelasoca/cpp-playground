@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 		// or std::stoi?
 		for (int i = 0;i < strlen(argumentAsCharArray); i++)
 		{
-			if (isdigit(argumentAsCharArray[i]) == 0)
+			if (isdigit(argumentAsCharArray[i]) == 0 && argumentAsCharArray[0]!='-')
 			{
 				is_string = true;
 			}

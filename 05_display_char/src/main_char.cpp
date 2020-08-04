@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 void remove_space(std::string str)
 {
 	std::string word = "";

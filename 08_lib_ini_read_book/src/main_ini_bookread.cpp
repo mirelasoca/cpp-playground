@@ -54,6 +54,15 @@ std::vector<Book> readBooksFromIniFile(const std::string& file_name)
 	{ 
 		std::cout << "error loading file code is " << rc << std::endl;
 	};
+	CSimpleIniA::TNamesDepend sections;
+	ini.GetAllSections(sections);
+	std::vector<std::string> list_sections;
+	CSimpleIniA::TNamesDepend::const_iterator i = sections.begin();
+	
+	for (; i != sections.end(); ++i) {
+		list_sections.push_back(i->pItem);
+	}
+	
 	const char * s_count = ini.GetValue("books", "count");
 	int count = atoi(s_count);
 	std::cout << "number of books is " << count << std::endl;
@@ -61,12 +70,12 @@ std::vector<Book> readBooksFromIniFile(const std::string& file_name)
 	for (int i = 0; i < count; i++)
 	{
 		// build the section name (E.g. book.1)
-		std::stringstream ss;
-		ss << "book." << (i + 1);
+		//std::stringstream ss;
+		//ss << "book." << (i + 1);
 		// Copy the stream to a string you can use
-		std::string section_name(ss.str());
-		myBook.name = ini.GetValue(section_name.c_str(),"name");
-		myBook.authors = ini.GetValue(section_name.c_str(), "author");
+		//std::string section_name(ss.str());
+		myBook.name = ini.GetValue(list_sections[i].c_str(),"name");
+		myBook.authors = ini.GetValue(list_sections[i].c_str(), "author");
 		//		...
 		results.emplace_back(myBook);
 	}
