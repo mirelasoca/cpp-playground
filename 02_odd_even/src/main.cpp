@@ -48,13 +48,27 @@ int main(int argc, char* argv[])
 		//number = argv[1]; // No
 		//should use atoi?
 		// or std::stoi?
-		for (int i = 0;i < strlen(argumentAsCharArray); i++)
+		if (argumentAsCharArray[0] == '-')
 		{
-			if (isdigit(argumentAsCharArray[i]) == 0 && argumentAsCharArray[0]!='-')
+			for (int i = 1; i < strlen(argumentAsCharArray); i++)
 			{
-				is_string = true;
+				if (isdigit(argumentAsCharArray[i]) == 0)
+				{
+					is_string = true;
+				}
 			}
 		}
+		else
+		{
+			for (int i = 0; i < strlen(argumentAsCharArray); i++)
+			{
+				if (isdigit(argumentAsCharArray[i]) == 0)
+				{
+					is_string = true;
+				}
+			}
+		}
+
 		if (is_string)
 		{
 			printf("NAN");
