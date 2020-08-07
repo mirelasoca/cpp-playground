@@ -1,6 +1,6 @@
 #include "alien_author.h"
 
-AlienAuthor::AlienAuthor(enum AlienSkinType skinType, const std::string& name)
+AlienAuthor::AlienAuthor(AlienSkinType skinType, const std::string& name)
 	: skinType(skinType),
 	 Author(name)
 {

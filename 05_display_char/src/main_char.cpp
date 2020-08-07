@@ -1,22 +1,7 @@
 #include <iostream>
 #include <string>
-void remove_space(std::string str)
-{
-	std::string word = "";
-	for (auto x : str)
-	{
-		if (x == ' ')
-		{
-			std::cout << word << std::endl;
-			word = "";
-		}
-		else
-		{
-			word = word + x;
-		}
-	}
-	std::cout << word << std::endl;
-}
+#include <vector>
+
 int main(int argc, char* argv[])
 {
 	if (argc <= 1)
@@ -28,14 +13,14 @@ int main(int argc, char* argv[])
 	
 	// Get the first argument
 	int i = 1;
-	std::string argumentAsString;
-	std::string space = " ";
+	std::vector<std::string> argumentAsString;
+
 	while (argv[i] != 0)
 	{
-		argumentAsString += argv[i] + space;
+		argumentAsString.emplace_back(argv[i]);
 		i++;
 	}
 	
-	//std::cout << argumentAsString << std::endl;
-	remove_space(argumentAsString);
+	for (std::string x : argumentAsString)
+		std::cout << x << std::endl;
 }

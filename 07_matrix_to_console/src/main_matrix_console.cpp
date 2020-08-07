@@ -85,7 +85,7 @@ public:
 		// TODO: add functionality
 		if (x >= column_count)
 			std::cout << " Error: Number of collum exceeds max number of collums" << std::endl;
-		if (y >= line_count)
+		else if (y >= line_count)
 			std::cout << "Error Number of line exceeds max number of lines" << std::endl;
 		else
 		{

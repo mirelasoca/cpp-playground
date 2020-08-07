@@ -49,7 +49,7 @@ std::vector<Book> readBooksFromIniFile(const std::string& file_name)
 	// TODO: BEGIN read the file -------------------------------------
 	CSimpleIniA ini;
 	const char* filename = file_name.c_str();
-	SI_Error rc = ini.LoadFile(filename);
+	enum SI_Error rc = ini.LoadFile(filename);
 	if (rc < 0) 
 	{ 
 		std::cout << "error loading file code is " << rc << std::endl;
