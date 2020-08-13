@@ -1,8 +1,9 @@
 #include "cell.h"
 
-Cells::Cells(int x, int y): x_lenght(x),y_width(y)
+void Cells::Init_matrix(int x, int y)
 {
-
+	x_lenght = x;
+	y_width = y;
 	for (int y = 0; y < y_width; y++)
 	{
 		std::vector<bool> v_bool;

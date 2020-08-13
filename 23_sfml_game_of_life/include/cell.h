@@ -11,9 +11,9 @@ protected:
 		long int x_coord;
 		long int y_coord;
 	}cell;
-	const cell Shapes[5][6] = { { {0, 0}, {1,0},{0,1},{1, 1} }, // Block
-							{{0,0}, {1,0}, {0, 1}, {2, 1},{1,2}}, // boat
-							{{0, 0}, {1, 0}, {2, 0} }, //Blinker
+	const cell Shapes[5][6] = { { {0, 0},{0, 0},{0, 0}, {1,0},{0,1},{1, 1} }, // Block
+							{{0,0}, {0,0},{1,0}, {0, 1}, {2, 1},{1,2}}, // boat
+							{{0, 0},{0, 0},{0, 0},{0, 0}, {1, 0}, {2, 0} }, //Blinker
 							{ {0,0}, {1,0}, {0, 1},{3,2}, {3,3}, {2,3} }, //beacon
 							{ {1, 0},{1, 0}, {2, 1},{0,2}, {1, 2}, {2, 2} } }; //glider
 	
@@ -26,8 +26,8 @@ public:
 		BEACON,
 		GLIDER,
 	}shapes;
-	Cells(int x, int y);
-	
+
+	void Init_matrix(int x, int y);
 	void calculate_new_state(void);
 	void update_state(void);
 	int DrawShape(shapes shape,long int x, long int y);
